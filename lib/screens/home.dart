@@ -61,6 +61,26 @@ class _homeState extends State<home> {
           ],
         ),
       ),
+      body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    width: double.infinity,
+                    height: 200,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 19, 145, 255),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Center(
+                      child: Text(
+                        "Home Page",
+                        style: TextStyle(color: Colors.white, fontSize: 28),
+                      ),
+                    ),
+                  ),]),))
     );
   }
 }

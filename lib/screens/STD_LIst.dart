@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:html';
 
+import 'package:erp/screens/update_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
@@ -36,7 +37,6 @@ class _listState extends State<list> {
       if (deleteResult["success"] == true) {
         print("Deleted Recode ${id}");
         Navigator.pushNamed(context, "/stdList");
-        
       } else {
         print("have some issue!");
       }
@@ -111,6 +111,21 @@ class _listState extends State<list> {
             return Card(
               margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => update(
+                              list[index]["id"],
+                              list[index]["name"],
+                              list[index]["email"],
+                              list[index]["phone"],
+                              list[index]["nic"],
+                              list[index]["city"]
+                                                       )
+                              
+                              ));
+                },
                 contentPadding: EdgeInsets.all(16),
                 leading: CircleAvatar(
                   child: Text(
@@ -147,12 +162,6 @@ class _listState extends State<list> {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      icon: Icon(Icons.edit),
-                      onPressed: () {
-                        // Add edit functionality here
-                      },
-                    ),
                     IconButton(
                       icon: Icon(Icons.delete),
                       onPressed: () {
